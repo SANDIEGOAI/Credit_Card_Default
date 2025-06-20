@@ -43,22 +43,22 @@ def evaluate_model_with_threshold(model, X_test, y_test, model_name, default_thr
     # Evaluate with default threshold (0.5)
     y_pred_default = (y_prob >= default_threshold).astype(int)
     print(f"\n{model_name} Performance (Default Threshold = {default_threshold}):")
-    print('Accuracy:', accuracy_score(y_test, y_pred_default))
-    print('Precision:', precision_score(y_test, y_pred_default))
-    print('Recall:', recall_score(y_test, y_pred_default))
-    print('F1-Score:', f1_score(y_test, y_pred_default))
-    print('AUC-ROC:', roc_auc_score(y_test, y_prob))
+    print('Accuracy:', np.ceil(accuracy_score(y_test, y_pred_default) * 100) / 100)
+    print('Precision:', np.ceil(precision_score(y_test, y_pred_default) * 100) / 100)
+    print('Recall:', np.ceil(recall_score(y_test, y_pred_default) * 100) / 100)
+    print('F1-Score:', np.ceil(f1_score(y_test, y_pred_default) * 100) / 100)
+    print('AUC-ROC:', np.ceil(roc_auc_score(y_test, y_prob) * 100) / 100)
     print('Confusion Matrix:\n', confusion_matrix(y_test, y_pred_default))
 
     # Evaluate with optimal threshold
     y_pred_optimal = (y_prob >= optimal_threshold).astype(int)
     print(
-        f"\n{model_name} Performance (Optimal Threshold = {optimal_threshold:.3f}):")
-    print('Accuracy:', accuracy_score(y_test, y_pred_optimal))
-    print('Precision:', precision_score(y_test, y_pred_optimal))
-    print('Recall:', recall_score(y_test, y_pred_optimal))
-    print('F1-Score:', f1_score(y_test, y_pred_optimal))
-    print('AUC-ROC:', roc_auc_score(y_test, y_prob))
+        f"\n{model_name} Performance (Optimal Threshold = {optimal_threshold:.2f}):")
+    print('Accuracy:', np.ceil(accuracy_score(y_test, y_pred_optimal) * 100) / 100)
+    print('Precision:', np.ceil(precision_score(y_test, y_pred_optimal) * 100) / 100)
+    print('Recall:', np.ceil(recall_score(y_test, y_pred_optimal) * 100) / 100)
+    print('F1-Score:', np.ceil(f1_score(y_test, y_pred_optimal) * 100) / 100)
+    print('AUC-ROC:', np.ceil(roc_auc_score(y_test, y_prob) * 100) / 100)
     print('Confusion Matrix:\n', confusion_matrix(y_test, y_pred_optimal))
 
 
